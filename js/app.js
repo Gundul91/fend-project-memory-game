@@ -25,6 +25,34 @@ function shuffle(array) {
     return array;
 }
 
+addEventListenerList(document.querySelectorAll(".card"),"mousedown",function(event){
+  const openedCard = document.querySelector(".open");
+  if(this.classList.item(1)!="match" && this!==openedCard){
+    if(openedCard!=null && openedCard.firstElementChild.classList.item(1)==this.firstElementChild.classList.item(1))
+    {
+      hideCards(openedCard,this);
+      openedCard.classList.add("match");
+      this.classList.add("match");
+      this.removeEventListener("mousedown",)
+    }else if(openedCard!=null){
+      let thisEl=this;
+      this.classList.add("open","show");
+      setTimeout(function (){hideCards(openedCard , thisEl)}, 400);
+    }else{
+    this.classList.add("open","show");
+    }
+  }
+});
+
+function hideCards(oldCard,newCard){
+  oldCard.classList.remove("open","show");
+  newCard.classList.remove("open","show");
+};
+
+function addEventListenerList(list,ev,foo)
+{
+  list.forEach((e)=>e.addEventListener(ev,foo));
+}; //function for add eventlistener to a list of elements
 
 /*
  * set up the event listener for a card. If a card is clicked:
