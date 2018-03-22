@@ -25,24 +25,39 @@ function shuffle(array) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const deck = ["fa-diamond" ,"fa-diamond" , "fa-rocket" , "fa-rocket" , "fa-paperclip" , "fa-paperclip" , "fa-motorcycle" , "fa-motorcycle" , "fa-birthday-cake" , "fa-birthday-cake" , "fa-image" , "fa-image" , "fa-home" , "fa-home" , "fa-fire-extinguisher" , "fa-fire-extinguisher" , "fa-fire" , "fa-fire" , "fa-cloud" , "fa-cloud" , "fa-camera" , "fa-camera" , "fa-align-justify" , "fa-align-justify" , "fa-bell" , "fa-bell" , "fa-beer" , "fa-beer" , "fa-bed" , "fa-bed" , "fa-angellist" , "fa-angellist" , "fa-balance-scale" , "fa-balance-scale" , "fa-bomb" , "fa-bomb" , "fa-bicycle" , "fa-bicycle" , "fa-leaf" , "fa-leaf" , "fa-cube" , "fa-cube" , "fa-bolt" , "fa-bolt" , "fa-anchor" , "fa-anchor" , "fa-paper-plane-o" ,  "fa-paper-plane-o"];
+  const fullDeck = ["fa-diamond" ,"fa-diamond" , "fa-rocket" , "fa-rocket" , "fa-paperclip" , "fa-paperclip" , "fa-motorcycle" , "fa-motorcycle" , "fa-birthday-cake" , "fa-birthday-cake" , "fa-image" , "fa-image" , "fa-home" , "fa-home" , "fa-fire-extinguisher" , "fa-fire-extinguisher" , "fa-fire" , "fa-fire" , "fa-cloud" , "fa-cloud" , "fa-camera" , "fa-camera" , "fa-align-justify" , "fa-align-justify" , "fa-bell" , "fa-bell" , "fa-beer" , "fa-beer" , "fa-bed" , "fa-bed" , "fa-angellist" , "fa-angellist" , "fa-balance-scale" , "fa-balance-scale" , "fa-bomb" , "fa-bomb" , "fa-bicycle" , "fa-bicycle" , "fa-leaf" , "fa-leaf" , "fa-cube" , "fa-cube" , "fa-bolt" , "fa-bolt" , "fa-anchor" , "fa-anchor" , "fa-paper-plane-o" , "fa-paper-plane-o" , "fa-volume-up" , "fa-volume-up" , "fa-thermometer-empty" , "fa-thermometer-empty" , "fa-pencil-alt" , "fa-pencil-alt" , "fa-key" , "fa-key" , "fa-fighter-jet" , "fa-fighter-jet" , "fa-chess-knight" , "fa-chess-knight" , "fa-check-circle" , "fa-check-circle" , "fa-chart-area" , "fa-chart-area"];
   // complete deck of cards 32 cards
-  let deckPortion = deck.slice(0 , 16);
-  deckPortion = shuffle(deckPortion);
-  const deckFrag = document.createDocumentFragment();
-  
-  for(let i=0; i<16;i++)
-  {
-    const card=document.createElement('li');
-    card.classList.add("card");
-    const tmpI = document.createElement('i');
-    tmpI.classList.add("fa",deckPortion[i])
-    card.append(tmpI);
-    deckFrag.appendChild(card);
-    console.log(card);
-  }// create a frag element with all the cards of this phase
+  console.log(fullDeck.length);
+  let deck = document.querySelector(".deck");
+  createDeck(32);
 
-  document.querySelector(".deck").appendChild(deckFrag);
+  function createDeck(dimension) {
+    deck.style.minHeight = dimension<10 ?  "340px" : "680px" ;
+
+    if(dimension!=4 && dimension!=32){
+      deck.style.width = "660px";
+    }else if(dimension==4){
+      deck.style.width = "330px";
+    }else{
+      deck.style.width = "1320px";
+    }
+
+    let deckPortion = fullDeck.slice(0 , dimension);
+    deckPortion = shuffle(deckPortion);
+    const deckFrag = document.createDocumentFragment();
+
+    for(let i=0; i<dimension;i++)
+    {
+      const card=document.createElement('li');
+      card.classList.add("card");
+      const tmpI = document.createElement('i');
+      tmpI.classList.add("fa",deckPortion[i])
+      card.append(tmpI);
+      deckFrag.appendChild(card);
+    }// create a frag element with all the cards of this phase
+
+    deck.appendChild(deckFrag);
+  }
 
   addEventListenerList(document.querySelectorAll(".card"),"mousedown",function(event){
     const openedCard = document.querySelectorAll(".open");
