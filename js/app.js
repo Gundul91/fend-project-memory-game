@@ -71,10 +71,12 @@ document.addEventListener('DOMContentLoaded', function () {
         openedCard[0].classList.add("match");
         this.classList.add("match");
         moves.textContent++;
+        checkStars();
       }else if(openedCard.length==1){// cards not match
         let thisEl=this;
         this.classList.add("open","show");
         moves.textContent++;
+        checkStars();
         setTimeout(function (){
           hideCards(openedCard[0] , thisEl)
         }, 400);// leave a few seconds to see the cards
@@ -86,8 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if(numCard!=32){
           numCard=numCard*2;
           cleanAndPlaceDeck();
+          showStars();
         }else{
-
+          //NEED: result screen
         }
       }
     }
@@ -119,6 +122,20 @@ function cleanAndPlaceDeck(){
   document.querySelector(".restart").addEventListener("click",function (){
     cleanAndPlaceDeck();
   });
+
+  function checkStars(){
+    if(moves.textContent==Math.round(numCard*0.90))
+    {
+      document.querySelector(".star3").style.display="none";
+    }else if(moves.textContent==Math.round(numCard*1.1)){
+      document.querySelector(".star2").style.display="none";
+    }
+  };
+
+  function showStars(){
+    document.querySelector(".star3").style.display="inline";
+    document.querySelector(".star2").style.display="inline";
+  };
 });
 
 /*
