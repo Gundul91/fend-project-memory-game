@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // complete deck of cards 32 cards
   console.log(fullDeck.length);
   let deck = document.querySelector(".deck");
-  createDeck(32);
+  createDeck(4);
 
   function createDeck(dimension) {
-    deck.style.minHeight = dimension<10 ?  "340px" : "680px" ;
+    deck.style.minHeight = dimension<10 ?  "27vw" : "50vw" ;
 
     if(dimension!=4 && dimension!=32){
-      deck.style.width = "660px";
+      deck.style.width = "50vw";
     }else if(dimension==4){
-      deck.style.width = "330px";
+      deck.style.width = "26vw";
     }else{
-      deck.style.width = "1320px";
+      deck.style.width = "94vw";
     }
 
     let deckPortion = fullDeck.slice(0 , dimension);
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const card=document.createElement('li');
       card.classList.add("card");
       const tmpI = document.createElement('i');
-      tmpI.classList.add("fa",deckPortion[i])
+      tmpI.classList.add("fa",deckPortion[i]);
       card.append(tmpI);
       deckFrag.appendChild(card);
     }// create a frag element with all the cards of this phase
