@@ -41,7 +41,7 @@ h1 {
     height: 100px;
     width: 100px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 2.2vw;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -49,12 +49,13 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
+    //transition: height 0.2s, width 0.2s;
 }
 
 .card{
   height: 10vw;
   width: 10vw;
-  transition: all 0.2s;
+  transition: background 0.2s, font-size 0.2s;
 }
 
 .deck .card {

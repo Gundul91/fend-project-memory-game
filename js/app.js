@@ -25,11 +25,13 @@ function shuffle(array) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const fullDeck = ["fa-diamond" ,"fa-diamond" , "fa-rocket" , "fa-rocket" , "fa-paperclip" , "fa-paperclip" , "fa-motorcycle" , "fa-motorcycle" , "fa-birthday-cake" , "fa-birthday-cake" , "fa-image" , "fa-image" , "fa-home" , "fa-home" , "fa-fire-extinguisher" , "fa-fire-extinguisher" , "fa-fire" , "fa-fire" , "fa-cloud" , "fa-cloud" , "fa-camera" , "fa-camera" , "fa-align-justify" , "fa-align-justify" , "fa-bell" , "fa-bell" , "fa-beer" , "fa-beer" , "fa-bed" , "fa-bed" , "fa-angellist" , "fa-angellist" , "fa-balance-scale" , "fa-balance-scale" , "fa-bomb" , "fa-bomb" , "fa-bicycle" , "fa-bicycle" , "fa-leaf" , "fa-leaf" , "fa-cube" , "fa-cube" , "fa-bolt" , "fa-bolt" , "fa-anchor" , "fa-anchor" , "fa-paper-plane-o" , "fa-paper-plane-o" , "fa-volume-up" , "fa-volume-up" , "fa-thermometer-empty" , "fa-thermometer-empty" , "fa-pencil-alt" , "fa-pencil-alt" , "fa-key" , "fa-key" , "fa-fighter-jet" , "fa-fighter-jet" , "fa-chess-knight" , "fa-chess-knight" , "fa-check-circle" , "fa-check-circle" , "fa-chart-area" , "fa-chart-area"];
+  const fullDeck = ["fa-diamond" ,"fa-diamond" , "fa-rocket" , "fa-rocket" , "fa-paperclip" , "fa-paperclip" , "fa-motorcycle" , "fa-motorcycle" , "fa-birthday-cake" , "fa-birthday-cake" , "fa-image" , "fa-image" , "fa-home" , "fa-home" , "fa-fire-extinguisher" , "fa-fire-extinguisher" , "fa-fire" , "fa-fire" , "fa-cloud" , "fa-cloud" , "fa-camera" , "fa-camera" , "fa-align-justify" , "fa-align-justify" , "fa-bell" , "fa-bell" , "fa-beer" , "fa-beer" , "fa-bed" , "fa-bed" , "fa-angellist" , "fa-angellist" ];
   // complete deck of cards 32 cards
-  console.log(fullDeck.length);
   let deck = document.querySelector(".deck");
-  createDeck(4);
+  let numCard=4;
+  let moves = document.querySelector(".moves");
+  createDeck(numCard);
+  addEventCards();
 
   function createDeck(dimension) {
     deck.style.minHeight = dimension<10 ?  "27vw" : "50vw" ;
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     deck.appendChild(deckFrag);
   }
 
+  function addEventCards(){
   addEventListenerList(document.querySelectorAll(".card"),"mousedown",function(event){
     const openedCard = document.querySelectorAll(".open");
     if(this.classList.item(1)!="match" && this!==openedCard[0]){
@@ -67,9 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         hideCards(openedCard[0],this);
         openedCard[0].classList.add("match");
         this.classList.add("match");
+        moves.textContent++;
       }else if(openedCard.length==1){// cards not match
         let thisEl=this;
         this.classList.add("open","show");
+        moves.textContent++;
         setTimeout(function (){
           hideCards(openedCard[0] , thisEl)
         }, 400);// leave a few seconds to see the cards
@@ -77,8 +82,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }else{// first card
         this.classList.add("open","show");
       }
+      if(document.querySelectorAll(".match").length==numCard){
+        if(numCard!=32){
+          numCard=numCard*2;
+          cleanAndPlaceDeck();
+        }else{
+
+        }
+      }
     }
   });
+}
+
+function cleanAndPlaceDeck(){
+  let cards=document.querySelectorAll(".card");
+  for(let i=0;i<cards.length;i++)
+  {
+    cards[i].remove();
+  }
+  setTimeout(function (){
+    createDeck(numCard);
+    addEventCards();
+  }, 300);
+  moves.textContent=0;
+}
 
   function hideCards(oldCard,newCard){
     oldCard.classList.remove("open","show");
@@ -88,6 +115,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function addEventListenerList(list,ev,foo){
     list.forEach((e)=>e.addEventListener(ev,foo));
   }; // function for add eventlistener to a list of elements
+
+  document.querySelector(".restart").addEventListener("click",function (){
+    cleanAndPlaceDeck();
+  });
 });
 
 /*
