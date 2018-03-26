@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let moves = document.querySelector(".moves");
   let tmpRes=0;
   let finalRes=0;
+  let star3class = document.querySelector(".result>.star3res");
+  let star2class = document.querySelector(".result>.star2res");
   createDeck(numCard);
   addEventCards();
 
@@ -92,15 +94,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if(document.querySelectorAll(".match").length==numCard){
         if(numCard!=32){
           finalRes+=tmpRes;
-          console.log(tmpRes);
           numCard=numCard*2;
           cleanAndPlaceDeck();
           showStars();
         }else{
-          let star3class = document.querySelector(".result>.star3res");
           finalRes+=tmpRes;
           finalRes=finalRes/4;
-          console.log(finalRes);
           document.querySelector(".result").style.display = "block";
           if(finalRes<3 && finalRes>=2){
             document.querySelector(".result>h2").innerHTML="Good!";
@@ -112,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
           }else if(finalRes<3){
             star3class.style.display="none";
             document.querySelector(".result>h2").innerHTML="Bad, but you can do better!"
-            let star2class = document.querySelector(".result>.star2res");
             if(finalRes>=1.5){
               star2class.classList.replace("fa-star","fa-star-half");
             }else{
@@ -157,6 +155,10 @@ function cleanAndPlaceDeck(){
     finalRes=0;
     cleanAndPlaceDeck();
     showStars();
+    document.querySelector(".result").style.display = "none";
+    document.querySelector(".result>h2").innerHTML="PERFECT!!!!!"
+    star3class.classList.replace("fa-star","fa-star");
+    star2class.classList.replace("fa-star","fa-star");
   });
 
   function checkStars(){
