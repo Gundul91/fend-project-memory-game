@@ -35,13 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function createDeck(dimension) {
     deck.style.minHeight = dimension<10 ?  "27vw" : "50vw" ;
-
     if(dimension!=4 && dimension!=32){
       deck.style.width = "50vw";
     }else if(dimension==4){
       deck.style.width = "26vw";
     }else{
-      deck.style.width = "94vw";
+      if(window.innerWidth>=window.innerHeight){ // change expantion for smartphone portrait
+        deck.style.width = "94vw";
+      }else{
+        deck.style.minHeight = "94vw";
+      }
     }
 
     let deckPortion = fullDeck.slice(0 , dimension);
