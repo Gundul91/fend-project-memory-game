@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let deck = document.querySelector(".deck");
   let numCard=4;
   let moves = document.querySelector(".moves");
+  let tmpRes=0;
+  let finalRes=0;
   createDeck(numCard);
   addEventCards();
 
@@ -89,11 +91,34 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if(document.querySelectorAll(".match").length==numCard){
         if(numCard!=32){
+          finalRes+=tmpRes;
+          console.log(tmpRes);
           numCard=numCard*2;
           cleanAndPlaceDeck();
           showStars();
         }else{
-          //NEED: result screen
+          let star3class = document.querySelector(".result>.star3res");
+          finalRes+=tmpRes;
+          finalRes=finalRes/4;
+          console.log(finalRes);
+          document.querySelector(".result").style.display = "block";
+          if(finalRes<3 && finalRes>=2){
+            document.querySelector(".result>h2").innerHTML="Good!";
+            if(finalRes>=2.5){
+              star3class.classList.replace("fa-star","fa-star-half");
+            }else{
+              star3class.style.display="none";
+            }
+          }else if(finalRes<3){
+            star3class.style.display="none";
+            document.querySelector(".result>h2").innerHTML="Bad, but you can do better!"
+            let star2class = document.querySelector(".result>.star2res");
+            if(finalRes>=1.5){
+              star2class.classList.replace("fa-star","fa-star-half");
+            }else{
+              star2class.style.display="none";
+            }
+          }
         }
       }
     }
@@ -124,14 +149,25 @@ function cleanAndPlaceDeck(){
 
   document.querySelector(".restart").addEventListener("click",function (){
     cleanAndPlaceDeck();
+    showStars();
+  });
+
+  document.querySelector(".btnRestart").addEventListener("click",function (){
+    numCard=4;
+    finalRes=0;
+    cleanAndPlaceDeck();
+    showStars();
   });
 
   function checkStars(){
-    if(moves.textContent==Math.round(numCard*0.90))
-    {
+    tmpRes=3;
+    if(parseInt(moves.textContent)>=Math.round(numCard*1.1)){
+      tmpRes=1;
       document.querySelector(".star3").style.display="none";
-    }else if(moves.textContent==Math.round(numCard*1.1)){
       document.querySelector(".star2").style.display="none";
+    }else if(parseInt(moves.textContent)>=Math.round(numCard*0.9)){
+      tmpRes=2;
+      document.querySelector(".star3").style.display="none";
     }
   };
 

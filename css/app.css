@@ -112,3 +112,90 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.result{
+  display: none;
+  position: fixed;
+  color:rgb(173, 92, 8);
+  width: 500px;
+  height: 250px;
+  border: solid 3px rgb(219, 64, 15);
+  text-align: center;
+  background-color: rgb(252, 152, 59);
+  left: calc(50% - (250px));
+  top: calc(50% - (250px));
+  border-radius: 10px;
+}
+
+.result>h2{
+  font-size: 2.3em;
+  margin: 10px auto 5px;
+}
+
+.result>.fa{
+  font-size: 3em;
+  color:rgb(250, 212, 52);
+  margin:0 15px;
+}
+
+.btnRestart{
+  width: 35%;
+  height: 15%;
+  background-color: rgb(175, 99, 38);
+  border-color: rgb(235, 102, 6);
+  color:rgb(235, 200, 53);
+}
+
+@media screen and (max-width: 900px){
+  .result{
+    width: 350px;
+    height: 180px;
+    left: calc(50% - (175px));
+    top: calc(50% - (175px));
+  }
+
+  .result>h2{
+    font-size: 1.6em;
+    margin: 6px auto 3px;
+  }
+
+  .result>.fa{
+    font-size: 2em;
+    margin:0 10px;
+  }
+
+  .result>p{
+    font-size: 0.8em;
+  }
+
+  .btnRestart{
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .result{
+    width: 200px;
+    height: 110px;
+    left: calc(50% - (100px));
+    top: calc(50% - (150px));
+  }
+
+  .result>h2{
+    font-size: 0.9em;
+    margin: 4px auto 2px;
+  }
+
+  .result>.fa{
+    font-size: 1.1em;
+    margin:0 6px;
+  }
+
+  .result>p{
+    font-size: 0.5em;
+  }
+
+  .btnRestart{
+    font-size: 0.4em;
+  }
+}
