@@ -33,9 +33,7 @@ h1 {
     font-weight: 300;
 }
 
-/*
- * Styles for the deck of cards
- */
+/* Styles for the deck of cards */
 
 .deck {
     height: 100px;
@@ -49,13 +47,12 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
-    //transition: height 0.2s, width 0.2s;
 }
 
-.card{
-  height: 10vw;
-  width: 10vw;
-  transition: background 0.2s, font-size 0.2s;
+.card {
+    height: 10vw;
+    width: 10vw;
+    transition: background 0.2s, font-size 0.2s, box-shadow 0.2s 0.2s;
 }
 
 .deck .card {
@@ -86,9 +83,7 @@ h1 {
     font-size: 33px;
 }
 
-/*
- * Styles for the Score Panel
- */
+/* Styles for the Score Panel */
 
 .score-panel {
     text-align: left;
@@ -113,89 +108,120 @@ h1 {
     cursor: pointer;
 }
 
-.result{
-  display: none;
-  position: fixed;
-  color:rgb(173, 92, 8);
-  width: 500px;
-  height: 250px;
-  border: solid 3px rgb(219, 64, 15);
-  text-align: center;
-  background-color: rgb(252, 152, 59);
-  left: calc(50% - (250px));
-  top: calc(50% - (250px));
-  border-radius: 10px;
+/* Styles for the Result Box */
+
+.result {
+    display: none;
+    position: fixed;
+    color: rgb(173, 92, 8);
+    width: 500px;
+    height: 250px;
+    border: solid 3px rgb(219, 64, 15);
+    text-align: center;
+    background-color: rgb(252, 152, 59);
+    left: calc(50% - (250px));
+    top: calc(50% - (250px));
+    border-radius: 10px;
 }
 
-.result>h2{
-  font-size: 2.3em;
-  margin: 10px auto 5px;
+.result>h2 {
+    font-size: 2.3em;
+    margin: 10px auto 5px;
 }
 
-.result>.fa{
-  font-size: 3em;
-  color:rgb(250, 212, 52);
-  margin:0 15px;
+.result>.fa {
+    font-size: 3em;
+    color: rgb(250, 212, 52);
+    margin: 0 15px;
 }
 
-.btnRestart{
-  width: 35%;
-  height: 15%;
-  background-color: rgb(175, 99, 38);
-  border-color: rgb(235, 102, 6);
-  color:rgb(235, 200, 53);
+.btnRestart {
+    width: 35%;
+    height: 15%;
+    background-color: rgb(175, 99, 38);
+    border-color: rgb(235, 102, 6);
+    color: rgb(235, 200, 53);
 }
 
-@media screen and (max-width: 900px){
-  .result{
-    width: 350px;
-    height: 180px;
-    left: calc(50% - (175px));
-    top: calc(50% - (175px));
+/* Media */
+
+@media screen and (max-width: 900px) {
+  h1 {
+      font-size: 25px;
   }
 
-  .result>h2{
-    font-size: 1.6em;
-    margin: 6px auto 3px;
+  .score-panel {
+      width: 220px;
   }
 
-  .result>.fa{
-    font-size: 2em;
-    margin:0 10px;
+  .result {
+      width: 350px;
+      height: 180px;
+      left: calc(50% - (175px));
+      top: calc(50% - (175px));
   }
 
-  .result>p{
-    font-size: 0.8em;
+  .result>h2 {
+      font-size: 1.6em;
+      margin: 6px auto 3px;
   }
 
-  .btnRestart{
-    font-size: 0.6em;
+  .result>.fa {
+      font-size: 2em;
+      margin: 0 10px;
+  }
+
+  .result>p {
+      font-size: 0.8em;
+  }
+
+  .btnRestart {
+      font-size: 0.6em;
+  }
+
+  .deck .card.show,
+  .deck .card.match {
+      font-size: 20px;
   }
 }
 
-@media screen and (max-width: 600px){
-  .result{
-    width: 200px;
-    height: 110px;
-    left: calc(50% - (100px));
-    top: calc(50% - (150px));
+@media screen and (max-width: 600px) {
+  h1 {
+      font-size: 18px;
   }
 
-  .result>h2{
-    font-size: 0.9em;
-    margin: 4px auto 2px;
+  .score-panel {
+      width: 130px;
+      font-size: 10px;
   }
 
-  .result>.fa{
-    font-size: 1.1em;
-    margin:0 6px;
+  .result {
+      width: 200px;
+      height: 110px;
+      left: calc(50% - (100px));
+      top: calc(50% - (150px));
   }
 
-  .result>p{
-    font-size: 0.5em;
+  .result>h2 {
+      font-size: 0.9em;
+      margin: 4px auto 2px;
   }
 
-  .btnRestart{
-    font-size: 0.4em;
+  .result>.fa {
+      font-size: 1.1em;
+      margin: 0px 6px;
+  }
+
+  .result>p {
+      font-size: 0.5em;
+  }
+
+  .btnRestart {
+      font-size: 0.4em;
+  }
+
+  .deck .card.show,
+  .deck .card.match {
+      font-size: 10px;
   }
 }
