@@ -33,6 +33,10 @@ h1 {
     font-weight: 300;
 }
 
+.timer{
+  font: 20px 'Roboto Mono', monospace;
+}
+
 /* Styles for the deck of cards */
 
 .deck {
@@ -135,6 +139,10 @@ h1 {
     margin: 0 15px;
 }
 
+.timerRes{
+  font: 3em 'Roboto Mono', monospace;
+}
+
 .btnRestart {
     width: 35%;
     height: 15%;
@@ -150,6 +158,10 @@ h1 {
       font-size: 25px;
   }
 
+  .timer{
+    font-size: 14px;
+  }
+
   .score-panel {
       width: 220px;
   }
@@ -159,24 +171,19 @@ h1 {
       height: 180px;
       left: calc(50% - (175px));
       top: calc(50% - (175px));
+      font-size: 0.7em;
   }
 
   .result>h2 {
-      font-size: 1.6em;
       margin: 6px auto 3px;
   }
 
   .result>.fa {
-      font-size: 2em;
       margin: 0 10px;
   }
 
-  .result>p {
-      font-size: 0.8em;
-  }
-
   .btnRestart {
-      font-size: 0.6em;
+      font-size: inherit;
   }
 
   .deck .card.show,
@@ -190,6 +197,10 @@ h1 {
       font-size: 18px;
   }
 
+  .timer{
+    font-size: 10px;
+  }
+
   .score-panel {
       width: 130px;
       font-size: 10px;
@@ -200,24 +211,15 @@ h1 {
       height: 110px;
       left: calc(50% - (100px));
       top: calc(50% - (150px));
+      font-size: 0.4em;
   }
 
   .result>h2 {
-      font-size: 0.9em;
       margin: 4px auto 2px;
   }
 
   .result>.fa {
-      font-size: 1.1em;
       margin: 0px 6px;
-  }
-
-  .result>p {
-      font-size: 0.5em;
-  }
-
-  .btnRestart {
-      font-size: 0.4em;
   }
 
   .deck .card.show,

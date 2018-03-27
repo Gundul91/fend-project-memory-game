@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let finalRes = 0;
   let star3class = document.querySelector(".result>.star3res");
   let star2class = document.querySelector(".result>.star2res");
+  let x;
+
+  startTimer();
+
   createDeck(numCard);
   addEventCards();
 
@@ -86,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
           cleanAndPlaceDeck();
           showStars();
         }else{
+          stopTimer();
+          document.querySelector(".timerRes").innerHTML=document.querySelector(".timer").innerHTML;
           finalRes+= tmpRes;
           finalRes = finalRes/4;
           document.querySelector(".result").style.display = "block";
@@ -109,6 +115,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+}
+
+function startTimer(){
+  start=new Date().getTime();
+  x = setInterval(function() {
+    let time=new Date().getTime()-start;
+    let minutes = "0" + Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = "0" + Math.floor((time % (1000 * 60)) / 1000);
+    document.querySelector(".timer").innerHTML=minutes.slice(-2) + ":" + seconds.slice(-2);
+  },1000);
+}
+
+function stopTimer() {
+    clearInterval(x);
 }
 
 function cleanAndPlaceDeck(){
@@ -147,6 +167,7 @@ function cleanAndPlaceDeck(){
     document.querySelector(".result>h2").innerHTML="PERFECT!!!!!"
     star3class.classList.replace("fa-star","fa-star");
     star2class.classList.replace("fa-star","fa-star");
+    startTimer();
   });
 
   function checkStars(){
