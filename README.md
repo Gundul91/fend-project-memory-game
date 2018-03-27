@@ -1,20 +1,7 @@
 # Memory Game Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Contributing](#contributing)
-
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+The player must combine all couples of cards by showing the 2 same cards together, every time he click on 2 cards the counter of moves increases by 1 and after every game a stars indicator show a valuation of your result (by 1 to 3) based on the number of moves , and at the end of all game you can see an average.
+There are 4 level everyone with the double of cards of the precedent.
+If you aren't satisfied of the flow of the current game you can restart it by clicking on the restart indicator on the top-right of the deck but this don't restart the timer that continue to slide also if it don't count for the final valuation.
